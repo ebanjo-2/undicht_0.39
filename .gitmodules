@@ -1,0 +1,15 @@
+[submodule "graphics/extern/glfw"]
+	path = graphics/extern/glfw
+	url = https://github.com/ebanjo-2/glfw
+[submodule "graphics/extern/EGL-Registry"]
+	path = graphics/extern/EGL-Registry
+	url = https://github.com/ebanjo-2/EGL-Registry.git
+[submodule "graphics/extern/glad"]
+	path = graphics/extern/glad
+	url = https://github.com/ebanjo-2/glad.git
+[submodule "tools/extern/stb"]
+	path = tools/extern/stb
+	url = https://github.com/ebanjo-2/stb
+[submodule "tools/extern/glm"]
+	path = tools/extern/glm
+	url = https://github.com/ebanjo-2/glm.git
