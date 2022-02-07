@@ -2,6 +2,7 @@
 #define GRAPHICS_API_H
 
 #include "graphics_config.h"
+#include "window/window.h"
 
 namespace undicht {
 
@@ -13,7 +14,8 @@ namespace undicht {
 
               public:
                 // init the graphics api
-                virtual bool init() = 0;
+                // @param window: the window on which the graphics api should draw stuff
+                virtual bool init(graphics::Window* window) = 0;
 
                 // terminate the graphics api
                 virtual bool term() = 0;

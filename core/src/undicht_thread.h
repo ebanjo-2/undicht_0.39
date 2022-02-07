@@ -32,11 +32,9 @@ namespace undicht {
 
         virtual ~Thread() {
 
-            using namespace std::chrono_literals;
-
             while (m_thread->joinable()) {
                 // waiting for the thread to finish
-                std::this_thread::sleep_for(10ms);
+                std::this_thread::sleep_for(std::chrono::duration<double, std::milli>(10));
             }
 
             delete m_thread;
@@ -45,14 +43,12 @@ namespace undicht {
         void join() {
             // waits until the thread has finished executing its function
 
-            using namespace std::chrono_literals;
-
             if (!m_thread)
                 return;
 
             while (m_thread->joinable()) {
                 // waiting for the thread to finish
-                std::this_thread::sleep_for(10ms);
+                std::this_thread::sleep_for(std::chrono::duration<double, std::milli>(10));
             }
         }
 

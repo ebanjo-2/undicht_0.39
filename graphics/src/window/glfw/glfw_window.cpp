@@ -27,7 +27,7 @@ namespace undicht {
 
             bool Window::open() {
                 /** opens the window
-                * @return false, if the window could not be created */
+                 * @return false, if the window could not be created */
 
                 // initializing glfw
                 glfwInit();
@@ -49,7 +49,7 @@ namespace undicht {
 #endif // USE_VULKAN
 
                 // opening the window
-                m_window = glfwCreateWindow(m_width, m_height, m_title.data(), NULL, NULL); //glfwGetPrimaryMonitor() for fullscreen
+                m_window = glfwCreateWindow(m_width, m_height, m_title.data(), NULL, NULL); // glfwGetPrimaryMonitor() for fullscreen
 
                 if (m_window == NULL) {
                     UND_ERROR << "FAILED TO CREATE WINDOW"
@@ -104,6 +104,7 @@ namespace undicht {
             void Window::getSize(int &width, int &height) {
 
                 glfwGetWindowSize(m_window, &width, &height);
+                //glfwGetFramebufferSize(m_window, &width, &height); // dont actually know which one is right (maybe both?)
             }
 
             void Window::setTitle(const char *title) {
@@ -160,7 +161,7 @@ namespace undicht {
                 if (visible) {
                     glfwSetInputMode(m_window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
                 } else {
-                    glfwSetInputMode(m_window, GLFW_CURSOR, GLFW_CURSOR_DISABLED); //cursor disappears
+                    glfwSetInputMode(m_window, GLFW_CURSOR, GLFW_CURSOR_DISABLED); // cursor disappears
                 }
             }
 
@@ -168,6 +169,23 @@ namespace undicht {
 
                 return m_cursor_visible;
             }
+
+            ///////////////////////////////////////////// graphics api specific /////////////////////////////////////////////
+
+#ifdef USE_VULKAN
+
+            bool Window::createRenderSurface(VkInstance &instance, VkSurfaceKHR& surface) {
+
+                if (glfwCreateWindowSurface(instance, m_window, nullptr, &surface) != VK_SUCCESS) {
+                    UND_ERROR << "Failed to create Vulkan Surface\n";
+                    return false;
+                }
+
+                return true;
+            }
+
+#endif // USE_VULKAN
+
         } // namespace glfw
 
     } // namespace graphics

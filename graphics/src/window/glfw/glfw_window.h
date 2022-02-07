@@ -64,6 +64,15 @@ namespace undicht {
 
 				virtual bool getCursorVisible();
 
+			public:
+				// graphics api specific
+
+#ifdef USE_VULKAN
+
+				bool createRenderSurface(VkInstance& instance, VkSurfaceKHR& surface);
+
+#endif // USE_VULKAN
+
 			};
 
 		} // glfw

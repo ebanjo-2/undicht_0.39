@@ -18,10 +18,7 @@ namespace undicht {
                 // init the graphics api
 
                 if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) { //loading all opengl functions
-
-                    UND_ERROR << "Failed to initialize GLAD"
-                              << "\n";
-
+                    UND_ERROR << "Failed to initialize GLAD\n";
                     return false;
                 }
 
